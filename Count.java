@@ -1,4 +1,4 @@
-public class CountCharacter    
+public class Count  
 {    
     public static void main(String[] args) {    
         String string = "The best of both worlds";    
