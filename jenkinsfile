@@ -1,0 +1,56 @@
+pipeline{
+    agent any
+    stages{
+        stage('scm'){
+            steps{
+                git credentialsId: '9295b0b7-1ecf-4477-ad8c-379644c3ae5b', url: 'https://github.com/saika39/simple-java-maven-app.git'
+            }
+        }
+        stage('version'){
+            steps{
+                sh "mvn --version"
+            }
+        }
+        stage('install'){
+            steps{
+                sh "mvn install"
+            }
+        }
+        stage('test'){
+            steps{
+                sh "mvn test"
+            }
+        }
+        stage('compile'){
+            steps{
+                sh "mvn compile"
+            }
+        }
+        stage('package'){
+            steps{
+                sh "mvn package"
+            }
+        }
+    }
+}
+
+/*
+node {
+    
+    stage('scm') {
+        git credentialsId: '9295b0b7-1ecf-4477-ad8c-379644c3ae5b', url: 'https://github.com/saika39/simple-java-maven-app.git'
+    }
+    stage('install2') {
+        sh "mvn install"
+    }
+    stage('test2') {
+        sh "mvn test"
+    }
+    stage('compile2') {
+        sh "mvn compile"
+    }
+    stage('package2') {
+        sh "mvn package"
+    }
+}
+*/
